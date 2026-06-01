@@ -1,4 +1,4 @@
-# shorten.
+# shorten — A Self-Hosted URL Shortener
 
 **Paste long. Get short.**
 
@@ -6,44 +6,35 @@ A self-hosted URL shortener that runs entirely on your machine. No accounts, no 
 
 ---
 
-## What it does
-
-Paste any URL — no matter how long — and get a short 6-character link back instantly. Visit the short link and you're redirected to the original. Everything is saved locally so your links survive restarts.
-
----
-
-## Setup
-
-**Requirements:** Python 3.7+. That's it.
-
-```bash
-cd ~/Downloads
-python url_shortener.py
-```
-
-Flask will auto-install on first run if it's not already present. Then open your browser to:
-
-```
-http://127.0.0.1:5000
-```
-
----
-
-## Features
+## ✨ Features
 
 - **Instant shortening** — 6-character alphanumeric codes
-- **Duplicate detection** — paste the same URL twice, get the same code back
+- **Duplicate detection** — same URL always produces the same code
 - **Persistent storage** — SQLite database saved alongside the script
-- **Recent history** — last 10 shortened links shown on the homepage
-- **One-click copy** — copy any short link to clipboard instantly
+- **Recent history** — last 10 shortened links displayed on the homepage
+- **One-click copy** — copy any short link to your clipboard instantly
 - **Click tracking** — every redirect is counted
 - **Stats page** — total links and last-hour activity at `/stats`
 - **Rate limiting** — max 10 shortens per minute per IP
 - **CSRF protection** — built-in, no extra dependencies
+- **Dark, minimal UI** — works great on desktop and mobile
 
 ---
 
-## Usage
+## 📦 Setup
+
+**Requirements:** Python 3.7 or later. No other dependencies needed — Flask installs automatically on first run.
+
+    cd ~/Downloads
+    python url_shortener.py
+
+Then open your browser to:
+
+    http://127.0.0.1:5000
+
+---
+
+## 🚀 Usage
 
 | Action | How |
 |---|---|
@@ -55,20 +46,26 @@ http://127.0.0.1:5000
 
 ---
 
-## Project structure
+## 📁 Project Structure
 
-```
-url_shortener.py   ← the entire app (run this)
-urls.db            ← auto-created on first run
-```
+    url_shortener.py   ← the entire app (just run this file)
+    urls.db            ← auto-created on first run
 
 ---
 
-## Notes
+## ⚠️ Notes
 
 - Links are only accessible while the server is running
-- Short links use `localhost` — they won't work on other devices unless you expose the server on your network
-- To share on a local network, run with `app.run(host='0.0.0.0', port=5000)` inside the script
+- Short links use `localhost` — they won't work on other devices unless you expose the server (see below)
+- To make the service available on your local network, edit the script and replace `app.run(...)` with:
+
+      app.run(host='0.0.0.0', port=5000)
+
+---
+
+## 📄 License
+
+This project is open source and provided as-is for personal use and learning.
 
 ---
 
